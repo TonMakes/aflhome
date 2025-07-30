@@ -1,31 +1,37 @@
-document.querySelectorAll('.carousel').forEach(carousel => {
-  const imageContainer = carousel.querySelector('.carousel-images');
-  const images = carousel.querySelectorAll('.carousel-images img');
-  const prevBtn = carousel.querySelector('.prev');
-  const nextBtn = carousel.querySelector('.next');
-  let index = 0;
+document.addEventListener('DOMContentLoaded', () => {
+  const carousels = document.querySelectorAll('.carousel.modern-carousel');
 
-  function showImage(i) {
-    const width = images[0].clientWidth;
-    imageContainer.style.transform = `translateX(-${i * width}px)`;
-  }
+  carousels.forEach(carousel => {
+    const images = carousel.querySelectorAll('.carousel-images img');
+    const prevBtn = carousel.querySelector('.prev');
+    const nextBtn = carousel.querySelector('.next');
+    let current = 0;
+    // Auto play a cada 4 segundos
+setInterval(() => {
+  current = (current + 1) % images.length;
+  showImage(current);
+}, 4000);
 
-  prevBtn.addEventListener('click', () => {
-    index = (index - 1 + images.length) % images.length;
-    showImage(index);
+
+    // Função para exibir imagem ativa
+    function showImage(index) {
+      images.forEach(img => img.classList.remove('active'));
+      images[index].classList.add('active');
+    }
+
+    // Inicializa a primeira imagem como ativa
+    showImage(current);
+
+    // Botão próximo
+    nextBtn.addEventListener('click', () => {
+      current = (current + 1) % images.length;
+      showImage(current);
+    });
+
+    // Botão anterior
+    prevBtn.addEventListener('click', () => {
+      current = (current - 1 + images.length) % images.length;
+      showImage(current);
+    });
   });
-
-  nextBtn.addEventListener('click', () => {
-    index = (index + 1) % images.length;
-    showImage(index);
-  });
-
-  // Redimensionamento
-  window.addEventListener('resize', () => showImage(index));
-
-  // AutoPlay individual
-  setInterval(() => {
-    index = (index + 1) % images.length;
-    showImage(index);
-  }, 4000);
 });
