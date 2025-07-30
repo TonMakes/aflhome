@@ -160,8 +160,8 @@ h1 {
 
 
 .carousel.modern-carousel .carousel-images img {
-  width: 240px;
-  height: 240px;
+  width: 320px;
+  height: 320px;
   object-fit: contain;
   border-radius: 16px;
   display: none;
@@ -241,9 +241,21 @@ h1 {
     min-height: unset;
   }
   .carousel.modern-carousel .carousel-images img {
-    width: 70px;
-    height: 70px;
-    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+    border-radius: 12px;
+    object-fit: contain;
+  }
+  .carousel.modern-carousel .carousel-images {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .carousel.modern-carousel .prev,
+  .carousel.modern-carousel .next {
+    font-size: 1.8rem;
+    padding: 0.3rem 1rem;
   }
 }
 .banner-dia-dos-pais {
