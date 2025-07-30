@@ -242,5 +242,14 @@ h1 {
     border-radius: 8px;
   }
 }
-
-/* --- Fim do CSS otimizado --- */
+.banner-dia-dos-pais {
+  display: block;
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  margin: 2rem auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+/* --- Banner Styles --- */
