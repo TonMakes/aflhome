@@ -70,18 +70,22 @@ h1 {
 .product a {
   display: inline-block;
   margin-top: 0.5rem;
-  padding: 0.5rem 1rem;
-  background-color: #e63946;
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(to right, #0077ff, #00c6ff);
   color: #fff;
   text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .product a:hover {
-  background-color: #d62828;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(to right, #005ecb, #00a8d6);
 }
+
 
 /* --- Product Image --- */
 .product > img {
@@ -179,7 +183,7 @@ h1 {
 
 /* --- Footer --- */
 .site-footer {
-  background: #fff7c2;
+  background-color: #f0f0f0;;
   padding: 1rem;
   text-align: center;
   font-size: 0.9rem;
@@ -253,3 +257,116 @@ h1 {
   object-fit: cover;
 }
 /* --- Banner Styles --- */
+.categoria {
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  border-left: 4px solid #1976d2;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+ul {
+  list-style-type: '🛍️ ';
+  padding-left: 1.5rem;
+}
+
+ul li {
+  margin: 0.5rem 0;
+}
+
+.site-header {
+  background-color: #fff;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.site-header img {
+  max-width: 120px;
+  display: block;
+  margin: 0 auto 0.5rem;
+}
+
+.site-header h1 {
+  font-size: 2rem;
+  margin: 0.2rem 0;
+  color: #1a1a1a;
+}
+
+.site-header p {
+  font-size: 1.05rem;
+  color: #444;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .site-header img {
+    max-width: 80px;
+  }
+
+  .site-header h1 {
+    font-size: 1.5rem;
+  }
+}
+.subtitle {
+  background-color: #fffef0;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.subtitle h2 {
+  font-size: 1.6rem;
+  color: #222;
+  margin-bottom: 1rem;
+}
+
+.subtitle p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .subtitle {
+    padding: 1.2rem 1rem;
+  }
+
+  .subtitle h2 {
+    font-size: 1.3rem;
+  }
+
+  .subtitle p {
+    font-size: 1rem;
+  }
+}
+.dica-final {
+  background-color: #fff3e0;
+  border-left: 4px solid #f57c00;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 6px;
+}
+
+.call-to-action {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.botao {
+  background: #1976d2;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: background 0.3s;
+}
+
+.botao:hover {
+  background: #125ea9;
+}
