@@ -506,3 +506,9 @@ ul li {
   margin: 1.5rem 0;
   font-style: italic;
 }
+
+.old-price {
+  text-decoration: line-through;
+  opacity: 0.6;
+  margin-right: 0.5rem;
+}
