@@ -499,3 +499,10 @@ ul li {
   border-left: 4px solid #f57c00;
   border-radius: 4px;
 }
+.safe-link-note {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+  margin: 1.5rem 0;
+  font-style: italic;
+}
