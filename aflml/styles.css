@@ -6,6 +6,57 @@ body {
   background: linear-gradient(to bottom, #ffe600, #fff6c0);
   color: #333;
 }
+.price {
+  display: inline-block;
+  font-size: 1.3rem;
+  color: #e63946;
+  font-weight: 700;
+  background: rgba(230, 57, 70, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin-left: 0.3rem;
+  animation: glowPrice 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowPrice {
+  from {
+    text-shadow: 0 0 5px #e63946;
+  }
+  to {
+    text-shadow: 0 0 20px #e63946;
+  }
+}
+
+.free-shipping-banner {
+  background-color: #e63946;   /* vermelho atraente */
+  color: #fff;                 /* texto branco */
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 0.8rem 1rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  animation: blink 2s step-start infinite;
+}
+
+@keyframes blink {
+  0%, 85% {
+    opacity: 1;
+  }
+  86%, 100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .free-shipping-banner {
+    font-size: 1rem;
+    padding: 0.6rem 0.8rem;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 .container {
   max-width: 800px;
@@ -51,6 +102,15 @@ h1 {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   transition: transform 0.2s ease;
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .product:hover {
@@ -86,6 +146,11 @@ h1 {
   background: linear-gradient(to right, #005ecb, #00a8d6);
 }
 
+.product a:active,
+.botao:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
 
 /* --- Product Image --- */
 .product > img {
@@ -234,11 +299,16 @@ h1 {
   .carousel.modern-carousel {
     gap: 8px;
   }
+  @media (max-width: 600px) {
   .carousel.modern-carousel .carousel-images {
-    gap: 6px;
-    padding: 8px 6px;
-    min-width: unset;
-    min-height: unset;
+    height: 280px; /* altura fixa */
+    padding: 12px;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
   }
   .carousel.modern-carousel .carousel-images img {
     width: 100%;
@@ -284,6 +354,11 @@ ul {
 ul li {
   margin: 0.5rem 0;
 }
+
+.categoria ul li a:active {
+  transform: scale(1.05);
+}
+
 
 .site-header {
   background-color: #fff;
@@ -381,4 +456,46 @@ ul li {
 
 .botao:hover {
   background: #125ea9;
+}
+
+/* === Botão Voltar ao Topo === */
+#back-to-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: none;             /* fica oculto até rolar */
+  background: #0077ff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: opacity 0.3s, transform 0.3s;
+  opacity: 0;                 /* invisível inicialmente */
+  z-index: 1000;
+}
+
+#back-to-top.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#back-to-top.hide {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.disclaimer {
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+  margin: 2rem 0 1rem;
+  padding: 0.5rem;
+  background-color: #fff3e0;
+  border-left: 4px solid #f57c00;
+  border-radius: 4px;
 }
