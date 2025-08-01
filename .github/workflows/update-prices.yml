@@ -1,24 +1,22 @@
+# .github/workflows/update-prices.yml
 name: 🔄 Atualizar preços ML
 
-# Dá permissão de escrita no conteúdo do repositório
 permissions:
   contents: write
 
 on:
   schedule:
-    - cron: '0 2 * * *'        # executa todo dia às 02:00 UTC
-  workflow_dispatch:          # permite disparo manual
+    - cron: '0 2 * * *'       # todo dia às 02:00 UTC
+  workflow_dispatch:         # permite disparo manual
 
 jobs:
   update-prices:
     runs-on: ubuntu-latest
-
     steps:
-      # 2) checkout com persist-credentials habilitado
       - name: Fazer checkout
         uses: actions/checkout@v3
         with:
-          persist-credentials: true  # garante que GITHUB_TOKEN é usado no git push
+          persist-credentials: true
 
       - name: Instalar Node e node-fetch
         run: |
@@ -26,12 +24,12 @@ jobs:
           npm install node-fetch@2
 
       - name: Executar script de atualização
-        run: node update-prices.js    # ou update-prices.cjs, conforme seu arquivo
+        run: node update-prices.js
 
       - name: Commit e Push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "actions@github.com"
-          git add index.html
+          git add aflml/index.html
           git commit -m "🔄 Atualiza preços ML" || echo "Nada para commitar"
           git push
