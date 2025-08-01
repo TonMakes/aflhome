@@ -2,8 +2,8 @@ name: 🔄 Atualizar preços ML
 
 on:
   schedule:
-    - cron: '0 2 * * *'        # executa todo dia às 02:00 UTC
-  workflow_dispatch:          # permite disparo manual
+    - cron: '0 2 * * *'
+  workflow_dispatch:
 
 jobs:
   update-prices:
