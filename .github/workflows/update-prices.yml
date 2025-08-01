@@ -14,8 +14,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 2) checkout com persist-credentials habilitado
       - name: Fazer checkout
         uses: actions/checkout@v3
+        with:
+          persist-credentials: true  # garante que GITHUB_TOKEN é usado no git push
 
       - name: Instalar Node e node-fetch
         run: |
@@ -23,7 +26,7 @@ jobs:
           npm install node-fetch@2
 
       - name: Executar script de atualização
-        run: node update-prices.cjs
+        run: node update-prices.js    # ou update-prices.cjs, conforme seu arquivo
 
       - name: Commit e Push
         run: |
