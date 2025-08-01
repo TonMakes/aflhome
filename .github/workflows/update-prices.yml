@@ -1,5 +1,9 @@
 name: 🔄 Atualizar preços ML
 
+# Dá permissão de escrita no conteúdo do repositório
+permissions:
+  contents: write
+
 on:
   schedule:
     - cron: '0 2 * * *'        # executa todo dia às 02:00 UTC
