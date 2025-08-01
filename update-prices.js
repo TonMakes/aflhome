@@ -9,20 +9,19 @@ const fetch = require('node-fetch');
   // Substitui cada <span class="price" data-mlid="MLAXXXX">…</span>
   html = html.replace(
     /<span class="price" data-mlid="(MLA\d+)">.*?<\/span>/g,
-    (_, mlid) => {
-      // Buscando preço sincronicamente não é possível,
-      // então vamos acumular promessas e processar depois
-      return `__REPLACE_MARKER__${mlid}__`;
-    }
+    (_, mlid) => `__REPLACE_MARKER__${mlid}__`
   );
 
   // Para cada marcador, busque o preço e substitua
-  const markers = Array.from(html.matchAll(/__REPLACE_MARKER__(MLA\d+)__/g))
-    .map(m => m[1]);
+  const markers = Array.from(
+    html.matchAll(/__REPLACE_MARKER__(MLA\d+)__/g)
+  ).map(m => m[1]);
 
   for (const mlid of markers) {
     const res  = await fetch(`https://api.mercadolibre.com/items/${mlid}`);
     const data = await res.json();
+
+    // Formata o valor em moeda BRL
     const valor = new Intl.NumberFormat('pt-BR', {
       style: 'currency', currency: 'BRL'
     }).format(data.selling_price);
@@ -32,11 +31,12 @@ const fetch = require('node-fetch');
       `__REPLACE_MARKER__${mlid}__`,
       `<span class="price" data-mlid="${mlid}">${valor}</span>`
     );
+
+    // Log de cada preço obtido
+    console.log(`👉 Novo preço do ${mlid}: R$ ${data.selling_price}`);
   }
 
   // Grava de volta
   fs.writeFileSync('index.html', html, 'utf8');
   console.log('✅ index.html atualizado com novos preços');
-  // Depois de obter data.selling_price…
-console.log('👉 Novo preço:', data.selling_price);
 })();
