@@ -6,15 +6,15 @@ const fetch = require('node-fetch');
   // Lê o HTML
   let html = fs.readFileSync('index.html', 'utf8');
 
-  // Substitui cada <span class="price" data-mlid="MLAXXXX">…</span>
-  html = html.replace(
-    /<span class="price" data-mlid="(MLA\d+)">.*?<\/span>/g,
-    (_, mlid) => `__REPLACE_MARKER__${mlid}__`
-  );
+  // Substitui cada <span class="price" data-mlid="ML{letra}\d+">…</span>
+ html = html.replace(
+   /<span class="price" data-mlid="(ML[A-Z]\d+)">.*?<\/span>/g,
+   (_, mlid) => `__REPLACE_MARKER__${mlid}__`
+ );
 
   // Para cada marcador, busque o preço e substitua
   const markers = Array.from(
-    html.matchAll(/__REPLACE_MARKER__(MLA\d+)__/g)
+    html.matchAll(/__REPLACE_MARKER__(ML[A-Z]\d+)__/g)
   ).map(m => m[1]);
 
   for (const mlid of markers) {
