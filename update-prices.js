@@ -1,8 +1,11 @@
 // update-prices.js
 const fs    = require('fs');
 const fetch = require('node-fetch');
+const path  = require('path');
 
 (async () => {
+  // caminho correto do HTML que deve ser atualizado
+  const filePath = path.join(__dirname, 'aflml', 'index.html');
   // Lê o HTML
   let html = fs.readFileSync('index.html', 'utf8');
 
