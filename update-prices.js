@@ -1,4 +1,4 @@
-// update-prices.cjs
+// update-prices.js
 const fs    = require('fs');
 const fetch = require('node-fetch');
 
@@ -20,8 +20,6 @@ const fetch = require('node-fetch');
   for (const mlid of markers) {
     const res  = await fetch(`https://api.mercadolibre.com/items/${mlid}`);
     const data = await res.json();
-
-    // Formata o valor em moeda BRL
     const valor = new Intl.NumberFormat('pt-BR', {
       style: 'currency', currency: 'BRL'
     }).format(data.selling_price);
@@ -32,8 +30,8 @@ const fetch = require('node-fetch');
       `<span class="price" data-mlid="${mlid}">${valor}</span>`
     );
 
-    // Log de cada preço obtido
-    console.log(`👉 Novo preço do ${mlid}: R$ ${data.selling_price}`);
+    // Loga o novo preço no console
+    console.log(`👉 Novo preço de ${mlid}:`, data.selling_price);
   }
 
   // Grava de volta
