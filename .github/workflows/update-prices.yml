@@ -1,0 +1,41 @@
+name: 🔄 Atualizar preços ML
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-prices:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Instalar node-fetch
+        run: npm install node-fetch@2
+      - name: Buscar preços ML e atualizar index.html
+        run: |
+          node <<'EOF'
+          const fs = require('fs');
+          const fetch = require('node-fetch');
+          let html = fs.readFileSync('index.html','utf8');
+          html = await Promise.all(
+            html.replace(
+              /<span class="price" data-mlid="(MLA\d+)">.*?<\/span>/g,
+              async (_, mlid) => {
+                const res = await fetch(`https://api.mercadolibre.com/items/${mlid}`);
+                const data = await res.json();
+                const valor = new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(data.selling_price);
+                return `<span class="price" data-mlid="${mlid}">${valor}</span>`;
+              }
+            )
+          );
+          fs.writeFileSync('index.html', html,'utf8');
+          EOF
+      - name: Commit e Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "actions@github.com"
+          git add index.html
+          git commit -m "🔄 Atualiza preços ML" || echo "Nada para commitar"
+          git push
