@@ -37,4 +37,6 @@ const fetch = require('node-fetch');
   // Grava de volta
   fs.writeFileSync('index.html', html, 'utf8');
   console.log('✅ index.html atualizado com novos preços');
+  // Depois de obter data.selling_price…
+console.log('👉 Novo preço:', data.selling_price);
 })();
