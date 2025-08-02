@@ -512,3 +512,11 @@ ul li {
   opacity: 0.6;
   margin-right: 0.5rem;
 }
+
+section[id]::before {
+  content: "";
+  display: block;
+  height: 80px;
+  margin-top: -80px;
+  visibility: hidden;
+}
