@@ -275,6 +275,91 @@ function gtag_report_conversion(url) {
   return false;
 }
 </script>
+<script>
+(async () => {
+  const API_URL = "https://ml-price-proxy.<seudominio>.workers.dev";
+
+  try {
+    const res = await fetch(API_URL);
+    if (!res.ok) throw new Error("Erro ao buscar dados");
+    const precos = await res.json();
+
+    document.querySelectorAll(".price[data-mlid]").forEach(el => {
+      const mlid = el.getAttribute("data-mlid");
+      if (precos[mlid]) {
+        const precoFormatado = new Intl.NumberFormat("pt-BR", {
+          style: "currency", currency: "BRL"
+        }).format(precos[mlid].preco);
+        el.textContent = precoFormatado;
+      }
+    });
+  } catch (error) {
+    console.error("Erro ao atualizar preços:", error);
+  }
+})();
+</script>
+
+    document.querySelectorAll(".price[data-mlid]").forEach(el => {
+      const mlid = el.getAttribute("data-mlid");
+      if (precos[mlid]) {
+        const precoFormatado = new Intl.NumberFormat("pt-BR", {
+          style: "currency", currency: "BRL"
+        }).format(precos[mlid].preco);
+        el.textContent = precoFormatado;
+      }
+    });
+  } catch (error) {
+    console.error("Erro ao atualizar preços:", error);
+  }
+})();
+</script>
+";
+
+  try {
+    const res = await fetch(API_URL);
+    if (!res.ok) throw new Error("Erro ao buscar dados");
+    const precos = await res.json();
+
+    document.querySelectorAll(".price[data-mlid]").forEach(el => {
+      const mlid = el.getAttribute("data-mlid");
+      if (precos[mlid]) {
+        const precoFormatado = new Intl.NumberFormat("pt-BR", {
+          style: "currency", currency: "BRL"
+        }).format(precos[mlid].preco);
+        el.textContent = precoFormatado;
+      }
+    });
+  } catch (error) {
+    console.error("Erro ao atualizar preços:", error);
+  }
+})();
+</script>
+
+
+
+<script>
+(async () => {
+  const API_URL = "https://ml-price-proxy.evertonfernandes09.workers.dev/"; // Substitua com a URL real do seu Worker
+
+  try {
+    const res = await fetch(API_URL);
+    if (!res.ok) throw new Error("Erro ao buscar dados");
+    const precos = await res.json();
+
+    document.querySelectorAll(".price[data-mlid]").forEach(el => {
+      const mlid = el.getAttribute("data-mlid");
+      if (precos[mlid]) {
+        const precoFormatado = new Intl.NumberFormat("pt-BR", {
+          style: "currency", currency: "BRL"
+        }).format(precos[mlid].preco);
+        el.textContent = precoFormatado;
+      }
+    });
+  } catch (error) {
+    console.error("Erro ao atualizar preços:", error);
+  }
+})();
+</script>
 
 </body>
 </html>
