@@ -1,179 +1,63 @@
-/* Estilos Globais */
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
     color: #333;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
-    max-width: 1200px;
+    width: 90%;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 2rem 0;
 }
 
-h1, h2, h3 {
-    color: #2c3e50;
-    margin-bottom: 15px;
-}
-
-h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-}
-
-h2 {
-    font-size: 2em;
-}
-
-p {
-    margin-bottom: 20px;
-}
-
-hr {
-    border: 0;
-    height: 1px;
-    background: #ddd;
-    margin: 30px 0;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-ul li {
-    margin-bottom: 10px;
-}
-
-a {
-    color: #3498db;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: #1d6fa3;
-}
-
-/* Estilos do Cabeçalho (Hero) */
-.hero {
-    background-color: #3498db;
-    color: #fff;
-    padding: 100px 0;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.hero .container {
-    max-width: 800px;
-}
-
-.hero h1 {
-    font-size: 3em;
-    margin-bottom: 15px;
-    font-weight: bold;
-}
-
-.hero .subtitle {
-    font-size: 1.2em;
-    opacity: 0.8;
-}
-
-/* Estilos das Seções */
-.intro-section,
-.coming-soon {
+header.hero {
     background-color: #fff;
-    padding: 30px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  padding: 1rem 1rem 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-.coming-soon ul {
-    margin-top: 20px;
+.subtitle {
+    color: #555;
+    font-size: 1.1rem;
 }
 
-.coming-soon li {
-    padding-left: 25px;
-    position: relative;
+.categorias-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    margin: 2rem 0;
 }
 
-.coming-soon li::before {
-    content: '\2022'; /* Bullet point */
-    color: #3498db;
-    position: absolute;
-    left: 0;
+.categoria-visual img {
+    max-width: 100%;
+    width: 800px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
 }
 
-.coming-soon .final-message {
-    font-weight: bold;
-    color: #e67e22;
-    margin-top: 30px;
-    text-align: center;
+.categoria-visual img:hover {
+    transform: scale(1.02);
 }
 
-/* Estilos do Rodapé */
 footer {
-    background-color: #2c3e50;
-    color: #fff;
-    padding: 30px 0;
+    background-color: #f8f8f8;
+    padding: 1.5rem 0;
     text-align: center;
-    font-size: 0.9em;
+    font-size: 0.9rem;
+    color: #777;
 }
 
-footer .container {
-    max-width: 600px;
-}
 
-footer p {
-    margin-bottom: 10px;
-}
-
-footer a {
-    color: #8ab4f8;
-}
-
-footer a:hover {
-    color: #fff;
-}
-
-footer .disclaimer {
-    font-style: italic;
-    color: #ddd;
-    margin-top: 20px;
-    font-size: 0.85em;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .container {
-        padding: 15px;
-    }
-
-    .hero {
-        padding: 80px 0;
-    }
-
-    .hero h1 {
-        font-size: 2.5em;
-    }
-
-    h2 {
-        font-size: 1.75em;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero h1 {
-        font-size: 2em;
-    }
-
-    .hero .subtitle {
-        font-size: 1em;
-    }
+header.hero img {
+  max-width: 120px;
+  height: auto;
+  display: block;
+  margin: 0 auto 0.5rem;
+  padding-bottom: 0.3rem;
 }
