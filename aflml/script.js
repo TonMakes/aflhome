@@ -53,3 +53,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // Inicialmente oculto
   btnTopo.classList.add("hidden");
 });
+
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.open(url, '_blank');
+    }
+  };
+  gtag('event', 'conversion', {
+    send_to: 'AW-17390270778/Xyr8CO2NqvwaELryqeRA',
+    event_callback: callback
+  });
+  return false;
+}
