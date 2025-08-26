@@ -1,0 +1,118 @@
+:root{
+  --logo-desktop: 200px;   /* altura do logo no desktop */
+  --logo-mobile: 100px;    /* altura do logo no mobile */
+  --header-h-desktop: 84px;
+  --header-h-mobile: 72px;
+
+  --bg: #0e0e12;
+  --text: #f3f3f7;
+  --muted: #b9b9c8;
+  --accent: #ffa12b;
+  --accent2:#15bdb1;
+  --accent3:#ffd84a;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif}
+
+.container{width:min(1200px,92%);margin:0 auto}
+
+/* Header fixo */
+.site-header{
+  position: sticky; top:0; z-index:1000;
+  background: rgba(10,10,12,.92);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  backdrop-filter: blur(6px);
+}
+.nav-wrap{
+  height: var(--header-h-desktop);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:.4rem 0;
+}
+
+/* Marca */
+.brand{display:flex; align-items:center; gap:.6rem; text-decoration:none; color:inherit}
+.brand-logo{height: var(--logo-desktop); width:auto; display:block}
+.brand-name{font-family:"Bebas Neue",system-ui,sans-serif; font-size:1.9rem; letter-spacing:.5px}
+
+/* Navegação */
+.nav{display:flex; align-items:center; gap:1.2rem}
+.nav-list{list-style:none; display:flex; gap:1rem; margin:0; padding:0}
+.nav-link{color:var(--muted); text-decoration:none; font-weight:600; padding:.4rem .2rem}
+.nav-link:hover,.nav-link:focus{color:var(--text)}
+.btn-cta{
+  text-decoration:none; color:#0b0b0f; font-weight:800;
+  background: linear-gradient(135deg,var(--accent),var(--accent3));
+  padding:.6rem .9rem; border-radius:999px; box-shadow:0 6px 14px rgba(255,161,43,.22);
+}
+
+/* Toggle (hambúrguer) */
+.nav-toggle{display:none; background:none; border:0; cursor:pointer; padding:.5rem}
+.nav-toggle .bar{display:block; width:26px; height:3px; background:#fff; margin:5px 0; border-radius:2px}
+
+/* ----- Mobile ----- */
+@media (max-width: 900px){
+  .nav-wrap{height: var(--header-h-mobile)}
+  .brand-logo{height: var(--logo-mobile)}
+  .brand-name{font-size:1.5rem}
+  .nav-toggle{display:block}
+  .nav{
+    position: fixed; left:0; right:0; top: var(--header-h-mobile);
+    background: rgba(20,20,25,.97);
+    border-bottom:1px solid rgba(255,255,255,.06);
+    display:grid; grid-template-columns:1fr; gap:1rem;
+    padding:1rem; transform:translateY(-120%); transition:transform .2s ease;
+  }
+  .nav.open{transform:translateY(0)}
+  .nav-list{flex-direction:column; gap:.25rem}
+  .btn-cta{justify-self:start}
+}
+/* ===== Hero Section ===== */
+.hero{
+  background: url("images/hero-skatepark.jpeg") center/cover no-repeat;
+  min-height: 90vh;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center; color:var(--text);
+  position:relative;
+}
+.hero::after{
+  content:""; position:absolute; inset:0;
+  background:rgba(0,0,0,.55);
+}
+.hero-content{
+  position:relative; z-index:1;
+  max-width:800px;
+}
+.hero h1{
+  font-family:"Bebas Neue",sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom:1rem;
+}
+.hero h1 span{
+  color: var(--accent);
+}
+.hero p{
+  font-size:1.1rem; line-height:1.6; margin-bottom:2rem;
+}
+.btn-hero{
+  text-decoration:none; color:#0b0b0f; font-weight:800;
+  background: linear-gradient(135deg,var(--accent),var(--accent3));
+  padding:.9rem 1.4rem; border-radius:999px;
+  font-size:1.05rem; box-shadow:0 6px 16px rgba(255,161,43,.28);
+}
+.btn-hero:hover{transform:translateY(-1px)}
+
+/* ===== Sections (âncoras) ===== */
+.section{
+  padding:5rem 0; background:var(--bg);
+}
+.section.alt{background:#141418}
+.section h2{
+  font-family:"Bebas Neue",sans-serif;
+  font-size:2.2rem; margin-bottom:1rem; color:var(--accent);
+}
+.section p{max-width:700px; line-height:1.6;}
+
+/* CTA final */
+.cta-final{text-align:center}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3º Andar Skatepark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#">
+        <img src="images/logo-3andar.png" alt="Logo 3º Andar Skatepark" class="brand-logo" />
+        <span class="brand-name">3º Andar Skatepark</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+
+      <nav class="nav" aria-label="Principal">
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link">Início</a></li>
+          <li><a href="#pistas" class="nav-link">Pistas</a></li>
+          <li><a href="#aulas" class="nav-link">Aulas</a></li>
+          <li><a href="#eventos" class="nav-link">Eventos</a></li>
+          <li><a href="#galeria" class="nav-link">Galeria</a></li>
+          <li><a href="#contato" class="nav-link">Contato</a></li>
+        </ul>
+        <a href="#agendar" class="btn-cta">Agendar Sessão</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container hero-content">
+      <h1>Bem-vindo ao <span>3º Andar Skatepark</span></h1>
+      <p>O lugar perfeito para viver o skate em sua essência: pistas modernas, eventos, aulas e muito estilo urbano.</p>
+      <a href="#agendar" class="btn-hero">Agendar Sessão</a>
+    </div>
+  </section>
+  <!-- Seções com âncoras -->
+  <section id="pistas" class="section">
+    <div class="container">
+      <h2>Pistas</h2>
+      <p>Descrição das pistas e obstáculos disponíveis no parque.</p>
+    </div>
+  </section>
+
+  <section id="aulas" class="section alt">
+    <div class="container">
+      <h2>Aulas</h2>
+      <p>Informações sobre aulas de skate para iniciantes e avançados.</p>
+    </div>
+  </section>
+
+  <section id="eventos" class="section">
+    <div class="container">
+      <h2>Eventos</h2>
+      <p>Próximas competições, encontros e shows no skatepark.</p>
+    </div>
+  </section>
+
+  <section id="galeria" class="section alt">
+    <div class="container">
+      <h2>Galeria</h2>
+      <p>Fotos e vídeos da comunidade 3º Andar Skatepark.</p>
+    </div>
+  </section>
+
+  <section id="contato" class="section">
+    <div class="container">
+      <h2>Contato</h2>
+      <p>Telefone, endereço e redes sociais do skatepark.</p>
+    </div>
+  </section>
+
+  <section id="agendar" class="section cta-final">
+    <div class="container">
+      <h2>Agende sua sessão</h2>
+      <a href="#" class="btn-hero">Reservar agora</a>
+    </div>
+  </section>
+<script>
+    
+    // Toggle do menu mobile
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.nav');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open');
+    });
+
+    // Fechar o menu ao clicar em um link (mobile)
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (nav.classList.contains('open')) {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
