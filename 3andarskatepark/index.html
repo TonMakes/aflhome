@@ -38,19 +38,35 @@
   </header>
 
   <!-- Hero Section -->
-  <section id="home" class="hero">
+  <section id="home" class="hero hero-flat">
     <!-- imagem responsiva cobrindo toda a área -->
-    <img
-      src="images/hero-skatepark.jpg"
-      alt="3º Andar Skatepark - half pipe e cones de treino"
-      class="hero-bg"
-    />
-
-    <div class="container hero-content">
+<div class="container hero-content">
       <h1>Bem-vindo ao <span>3º Andar</span> Skatepark</h1>
       <p>O lugar perfeito para viver o skate em sua essência: pista moderna, eventos, aulas e muito estilo urbano em Mauá.</p>
+
+  <!-- Carousel apenas de imagens -->
+  <div class="hero-carousel" aria-label="Destaques de imagens">
+    <button class="hc-arrow prev" aria-label="Slide anterior" type="button">‹</button>
+    <div class="hc-track">
+      <a class="hc-slide is-active" href="#" data-fill-link="true">
+        <img src="images/slide-1.jpg" alt="Destaque 1" loading="lazy" decoding="async">
+      </a>
+      <a class="hc-slide" href="#" data-fill-link="true">
+        <img src="images/slide-4.jpg" alt="Destaque 2" loading="lazy" decoding="async">
+      </a>
+      <a class="hc-slide" href="#" data-fill-link="true">
+        <img src="images/slide-2.jpeg" alt="Destaque 3" loading="lazy" decoding="async">
+      </a>
+      <a class="hc-slide" href="#" data-fill-link="true">
+        <img src="images/slide-3.jpg" alt="Destaque 4" loading="lazy" decoding="async">
+      </a>
     </div>
-  </section>
+    <button class="hc-arrow next" aria-label="Próximo slide" type="button">›</button>
+    <div class="hc-dots" role="tablist" aria-label="Selecionar slide"></div>
+  </div>
+
+    </div>
+</section>
 
   <!-- Seções com âncoras -->
   <section id="pistas" class="section">
@@ -128,6 +144,48 @@
         }
       });
     });
-  </script>
+  
+  // === Hero carousel (somente imagens, links genéricos) ===
+  (function(){
+    const root = document.querySelector('.hero-carousel');
+    if(!root) return;
+    const slides = Array.from(root.querySelectorAll('.hc-slide'));
+    const prev = root.querySelector('.hc-arrow.prev');
+    const next = root.querySelector('.hc-arrow.next');
+    const dotsWrap = root.querySelector('.hc-dots');
+    let idx = 0, timer = null, AUTOPLAY = 4500;
+
+    function go(i){
+      slides[idx].classList.remove('is-active');
+      dotsWrap.children[idx]?.setAttribute('aria-selected','false');
+      idx = (i + slides.length) % slides.length;
+      slides[idx].classList.add('is-active');
+      dotsWrap.children[idx]?.setAttribute('aria-selected','true');
+    }
+    function nextS(){ go(idx+1); }
+    function prevS(){ go(idx-1); }
+
+    slides.forEach((_, i) => {
+      const b = document.createElement('button');
+      if(i===idx) b.setAttribute('aria-selected','true');
+      b.addEventListener('click', ()=>{ stop(); go(i); start(); });
+      dotsWrap.appendChild(b);
+    });
+
+    prev.addEventListener('click', ()=>{ stop(); prevS(); start(); });
+    next.addEventListener('click', ()=>{ stop(); nextS(); start(); });
+
+    function start(){ stop(); timer = setInterval(nextS, AUTOPLAY); }
+    function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', start);
+
+    start();
+  })();
+
+</script>
 </body>
 </html>
