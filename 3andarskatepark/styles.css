@@ -384,3 +384,31 @@ html{ scroll-behavior: smooth; }
   height: 100% !important;  /* substitui altura fixa */
   object-fit: cover !important;
 }
+
+/* Aulas & Eventos: centralizar parágrafo introdutório */
+
+
+
+/* Aulas & Eventos: centralizar parágrafo introdutório (ajuste sk-body) */
+#aulas .sk-body > p,
+#eventos .sk-body > p {
+  max-width: 720px;
+  margin: 0 auto 1rem;
+  text-align: center;
+}
+/* Mini mapa responsivo (sem alterar o restante da página) */
+.map-embed {
+  margin-top: 1rem;
+  border-radius: 12px;
+  overflow: hidden;
+  /* opcional: borda suave como as caixas */
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+}
+
+.map-embed iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;   /* mantém proporção de vídeo */
+  border: 0;
+}
