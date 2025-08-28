@@ -274,7 +274,7 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
 /* == Hero (flat background) == */
 .hero.hero-flat{ background: #e6e7eb; }        /* cinza claro */
 .hero.hero-flat::after{ background: none; }    /* remove overlay escuro */
-.hero.hero-flat .hero-content{ /* mantém centralização; tipografia já herdada */ }
+
 
 /* == Carousel: mostrar a imagem inteira sem cortar == */
 .hc-slide{ background: #0b0b0f; }              /* "letterbox" discreto atrás */
@@ -317,3 +317,70 @@ html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
 .hc-slide{ background: transparent !important; }
 .hc-slide img{ object-fit: cover !important; width:100% !important; height:100% !important; }
 
+/* === Eventos (Instagram) === */
+.insta-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+/* Força o embed a ocupar toda a coluna e corrige min-width padrão do Instagram */
+.insta-grid .instagram-media{
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 auto !important;
+  background: transparent !important;
+}
+
+/* Suaviza a rolagem entre âncoras */
+html{ scroll-behavior: smooth; }
+
+/* Evita que o cabeçalho fixo cubra o título ao navegar por âncoras */
+.section{ scroll-margin-top: var(--header-h-desktop); }
+@media (max-width: 900px){
+  .section{ scroll-margin-top: var(--header-h-mobile); }
+}
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+
+
+/* Botão Voltar ao Topo */
+#backToTop {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  width: 48px;
+  height: 48px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: none; /* começa escondido */
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(0,0,0,.35);
+  transition: opacity .3s ease, transform .3s ease;
+  z-index: 9999;
+}
+#backToTop.show { display: flex; opacity: 1; transform: translateY(0); }
+#backToTop:hover { transform: translateY(-3px); }
+
+/* Corrigir distância entre Pistas e Aulas */
+#aulas.section { padding-top: 2rem; }
+
+
+/* === Pistas: imagem com formatação do carrossel (aspect 16:9, cover) === */
+.pistas-grid .sk-media{
+  aspect-ratio: 16 / 9;
+}
+.pistas-grid .sk-media img{
+  width: 100%;
+  height: 100% !important;  /* substitui altura fixa */
+  object-fit: cover !important;
+}
