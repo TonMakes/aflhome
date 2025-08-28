@@ -412,3 +412,8 @@ html{ scroll-behavior: smooth; }
   aspect-ratio: 16 / 9;   /* mantém proporção de vídeo */
   border: 0;
 }
+/* Ajuste pontual: tamanho dos ícones das redes no Contato */
+.social-links svg {
+  width: 48px;
+  height: 48px;
+}
